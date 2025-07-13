@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="jp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lunox Client</title>
+        <link rel="stylesheet" href="SUB/style.css">
+    </head>
+    <header>
+
+        <div id="Lunox">
+            <p>Lunox Client</p>
+        </div>
+        
+    </header>
+
+    <body>
+        <div class="color-picker-container">
+            <div class="color-box white" onclick="changeColor('white')"></div>
+            <div class="color-box black" onclick="changeColor('black')"></div>
+        </div>
+
+        <button class="toggle-button" onclick="toggleColorPicker()">
+            <img src="/image/color.png" alt="カラーピッカー"/>
+        </button>
+
+    <script>
+  function toggleColorPicker() {
+    const white = document.querySelector('.color-box.white');
+    const black = document.querySelector('.color-box.black');
+    const isOpen = white.classList.contains('show');
+
+    if (isOpen) {
+      white.classList.remove('show');
+      black.classList.remove('show');
+    } else {
+      white.classList.add('show');
+      setTimeout(() => {
+        black.classList.add('show');
+      }, 100);
+    }
+  }
+
+  function changeColor(color) {
+    document.body.style.backgroundColor = color;
+    document.body.style.backgroundColor = (color === 'black') ? 'rgb(26, 26, 26)' : 'white';
+    document.body.style.color = (color === 'black') ? 'white' : 'black';
+    localStorage.setItem('savedColor', color); // 🌟 保存する！
+  }
+
+  window.onload = function () {
+    const saved = localStorage.getItem('savedColor');
+    if (saved === 'black' || saved === 'white') {
+      changeColor(saved);
+    }
+  };
+</script>
+
+<script src="/theme.js"></script>
+
+        </body>
+
+    <ul class="menu">
+        
+      </ul>
+
+      <a href="./index.html" class="bn3637 bn38">Home</a>
+
+      <a href="./Page/Client/Client.html" class="b c">Client</a>
+
+      <a href="./Page/Version/Version.html" class="d e">Info</a>
+
+      <a href="./Page/Config/Config.html" class="f g">Config</a>
+
+      <a href="./Page/Discord/Discord.html" class="h i">Discord</a>
+
+</html>
